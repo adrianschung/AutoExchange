@@ -10,8 +10,55 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <%= link_to (image_tag("autoexchange.png", height: '50', class: 'brand-icon')), root_path %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item <%= 'active' if params[:action] == 'index' %>">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item <%= 'active' if params[:action] == 'howto' %>">
+            <a class="nav-link" href="/howto">How To Exchange</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Vehicles
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Automobiles</a>
+              <a class="dropdown-item" href="#">Motocycles</a>
+              <a class="dropdown-item" href="#">Boats</a>
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to current_user.username, '#', class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Log in", new_user_session_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Sign up", new_user_registration_path, class: 'nav-link' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+    <% if notice.present? %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert.present? %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
