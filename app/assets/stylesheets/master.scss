@@ -1,3 +1,8 @@
 .brand-icon {
   margin-right: 5px;
 }
+
+form abbr[title] {
+  border-bottom: none !important;
+  text-decoration: none !important;
+}

@@ -33,11 +33,16 @@
               <a class="dropdown-item" href="#">Boats</a>
             </div>
           </li>
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <a class="nav-link" href="/vehicles/new">List a Vehicle</a>
+            </li>
+          <% end %>
         </ul>
         <ul class="navbar-nav">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to current_user.username, '#', class: 'nav-link' %>
+              <%= link_to "My Profile", '#', class: 'nav-link' %>
             </li>
             <li class="nav-item">
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
