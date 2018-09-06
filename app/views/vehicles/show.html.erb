@@ -6,3 +6,7 @@
 <%= number_to_currency(@vehicle.price) %>
 </br>
 <%= @vehicle.description %>
+</br>
+
+<% if current_user == @vehicle.user %>
+<%= link_to "Delete Listing", vehicle_path(@vehicle), post, method: :delete %>
