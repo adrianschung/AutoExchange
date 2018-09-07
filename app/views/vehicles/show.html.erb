@@ -1,12 +1,37 @@
-<h1><%= @vehicle.year %> <%= @vehicle.make %> <%= @vehicle.model %></h1>
-<%= @vehicle.color %>
-</br>
-<%= @vehicle.mileage %>
-</br>
-<%= number_to_currency(@vehicle.price) %>
-</br>
-<%= @vehicle.description %>
-</br>
-
-<% if current_user == @vehicle.user %>
-<%= link_to "Delete Listing", vehicle_path(@vehicle), post, method: :delete %>
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <h2 style="margin-top: 0.5rem"><%= @vehicle.year %> <%= @vehicle.make %> <%= @vehicle.model %></h2>
+    </div>
+    <div class="col-2 text-center">
+      <% if current_user == @vehicle.user %>
+        <%= button_to "Delete Listing", vehicle_path(@vehicle), class: "btn btn-danger", style: "margin-top: 8px", method: :delete %>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+  Seller: <%= @vehicle.user.email %>
+  <br />
+  <br />
+    <span class="listing-price">
+    <b>Asking Price: <%= number_to_currency(@vehicle.price) %></b>
+  </span>
+  <br />
+  <br />
+  <div class="specifications-box">
+    <h3>Specifications</h3>
+    <div class="row">
+      <div class="col-2">
+        Model: <%= @vehicle.color %>
+      </div>
+      <br />
+      <div class="col-2">
+        Mileage: <%= number_with_delimiter(@vehicle.mileage) + " km" %>
+      </div>
+      <br />
+      <br />
+    </div>
+    <h2>Additional Notes</h2>
+    <%= @vehicle.description %>
+  </div>
+</div>

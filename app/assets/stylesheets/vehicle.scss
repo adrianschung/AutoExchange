@@ -1,3 +1,20 @@
 // Place all the styles related to the vehicle controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.listing-price {
+  background-color: #ff6666;
+  border-radius: 5px;
+  padding: 5px;
+  -webkit-box-shadow: 0px 2px 5px 1px rgba(207,207,207,1);
+  -moz-box-shadow: 0px 2px 5px 1px rgba(207,207,207,1);
+  box-shadow: 0px 2px 5px 1px rgba(207,207,207,1);
+}
+
+.specifications-box {
+  background-color: #f7f7f7;
+  border: 2px;
+  border-style: solid;
+  padding: 5px;
+  margin-bottom: 10px;
+}
