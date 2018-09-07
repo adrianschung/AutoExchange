@@ -36,7 +36,7 @@
             </li>
             <% if user_signed_in? %>
               <li class="nav-item">
-                <a class="nav-link" href="/vehicles/new">List a Vehicle</a>
+                <a class="nav-link <%= 'active' if params[:controller] == 'vehicles' && params[:action] == 'new' %>" href="/vehicles/new">List a Vehicle</a>
               </li>
             <% end %>
           </ul>
