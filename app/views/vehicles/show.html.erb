@@ -6,6 +6,10 @@
     <div class="col-2 text-center">
       <% if current_user == @vehicle.user %>
         <%= button_to "Delete Listing", vehicle_path(@vehicle), class: "btn btn-danger", style: "margin-top: 8px", method: :delete %>
+        <%= simple_form_for @photo do |f| %>
+          <%= f.input :photo %>
+          <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -13,7 +17,10 @@
   Seller: <%= @vehicle.user.email %>
   <br />
   <br />
-    <span class="listing-price">
+  <% @vehicle.photos.each do |photo| %>
+    <%= image_tag photo.picture %>
+  <% end %>
+  <span class="listing-price">
     <b>Asking Price: <%= number_to_currency(@vehicle.price) %></b>
   </span>
   <br />
