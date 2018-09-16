@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'home#index'
   get '/howto', to: 'home#howto'
+  get '/user/:id', to: 'user#show'
   resources :vehicles
 end
