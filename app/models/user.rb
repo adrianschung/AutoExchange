@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook google_oauth2]
   has_many :vehicles
+  has_many :conversations
+  has_many :messages
   validates :first_name, presence: :true
   validates :last_name, presence: :true
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
