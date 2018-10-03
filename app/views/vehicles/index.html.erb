@@ -1,4 +1,4 @@
-<h1>All Listings</h1>
+<h1>Listings</h1>
 <% @vehicles.each do |vehicle| %>
   <%= link_to "#{vehicle.year} #{vehicle.make} #{vehicle.model}", vehicle_path(vehicle) %>
   </br>

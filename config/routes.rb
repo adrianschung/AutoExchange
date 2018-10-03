@@ -3,5 +3,11 @@ Rails.application.routes.draw do
   root 'home#index'
   get '/howto', to: 'home#howto'
   get '/user/:id', to: 'user#show'
-  resources :vehicles
+  resources :vehicles do
+    collection do
+      get :automobiles
+      get :boats
+      get :motorcycles
+    end
+  end
 end

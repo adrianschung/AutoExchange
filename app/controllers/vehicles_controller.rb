@@ -5,6 +5,21 @@ class VehiclesController < ApplicationController
     @vehicles = Vehicle.all
   end
 
+  def automobiles
+    @vehicles = Vehicle.where(type: 'automobile')
+    render "vehicles/index"
+  end
+
+  def boats
+    @vehicles = Vehicle.where(type: 'boat')
+    render "vehicles/index"
+  end
+
+  def motorcycles
+    @vehicles = Vehicles.where(type: 'motorcycle')
+    render "vehicles/index"
+  end
+
   def show
     @vehicle = Vehicle.find(params[:id])
     @photo = Photo.new
