@@ -24,7 +24,7 @@
             <li class="nav-item <%= 'active' if params[:action] == 'howto' %>">
               <a class="nav-link" href="/howto">How To Exchange</a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown <%= 'active' if params[:controller] == 'vehicles' && params[:action] != 'new' %>">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Vehicles
               </a>
@@ -58,6 +58,10 @@
               </li>
             <% end %>
           </ul>
+          <%= form_tag(vehicles_path, method: :get, class: 'form-inline my-2 my-lg-0') do %>
+            <%= text_field_tag :term, params[:term], class: 'form-control mr-sm-2' %>
+            <%= submit_tag 'Search', name: nil, class: 'btn btn-outline-danger my-2 my-sm-0' %>
+          <% end %>
         </div>
       </div>
     </nav>

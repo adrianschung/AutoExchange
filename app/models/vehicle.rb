@@ -15,4 +15,15 @@ class Vehicle < ApplicationRecord
   def capitalize_color
     self.color = self.color.capitalize
   end
+
+  def self.search(term)
+    if term
+      where('UPPER(model) LIKE :search OR
+             UPPER(make) LIKE :search OR
+             UPPER(color) LIKE :search OR
+             UPPER(description) LIKE :search', search: term.upcase)
+    else
+      all
+    end
+  end
 end

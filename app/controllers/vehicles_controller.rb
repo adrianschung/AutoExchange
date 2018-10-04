@@ -2,7 +2,7 @@ class VehiclesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @vehicles = Vehicle.all
+    @vehicles = Vehicle.search(params[:term])
   end
 
   def automobiles
@@ -43,6 +43,6 @@ class VehiclesController < ApplicationController
   private
 
   def vehicle_params
-    params.require(:vehicle).permit(:type, :make, :model, :color, :year, :mileage, :price, :description)
+    params.require(:vehicle).permit(:type, :make, :model, :color, :year, :mileage, :price, :description, :term)
   end
 end
