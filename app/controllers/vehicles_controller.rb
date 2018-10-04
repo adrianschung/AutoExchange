@@ -6,17 +6,17 @@ class VehiclesController < ApplicationController
   end
 
   def automobiles
-    @vehicles = Vehicle.where(type: 'automobile')
+    @vehicles = Vehicle.where(type: 'Automobile')
     render "vehicles/index"
   end
 
   def boats
-    @vehicles = Vehicle.where(type: 'boat')
+    @vehicles = Vehicle.where(type: 'Boat')
     render "vehicles/index"
   end
 
   def motorcycles
-    @vehicles = Vehicles.where(type: 'motorcycle')
+    @vehicles = Vehicle.where(type: 'Motorcycle')
     render "vehicles/index"
   end
 
