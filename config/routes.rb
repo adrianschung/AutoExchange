@@ -10,4 +10,7 @@ Rails.application.routes.draw do
       get :motorcycles
     end
   end
+  resource :conversations do
+    resources :messages
+  end
 end
