@@ -21,7 +21,7 @@ class VehiclesController < ApplicationController
   end
 
   def show
-    @vehicle = Vehicle.find(params[:id])
+    current_vehicle
     @photo = Photo.new
   end
 
@@ -34,6 +34,11 @@ class VehiclesController < ApplicationController
     redirect_to vehicles_path(@vehicle)
   end
 
+  def update
+    current_vehicle.update_attributes(lesson_params)
+    redirect_to vehicles_path(current_vehicle)
+  end
+
   def destroy
     @vehicle = Vehicle.find(params[:id])
     @vehicle.destroy
@@ -44,5 +49,9 @@ class VehiclesController < ApplicationController
 
   def vehicle_params
     params.require(:vehicle).permit(:type, :make, :model, :color, :year, :mileage, :price, :description, :term)
+  end
+
+  def current_vehicle
+    @current_vehicle ||= Vehicle.find(params[:id])
   end
 end
