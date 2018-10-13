@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get :boats
       get :motorcycles
     end
+    resources :photos, only: :create
   end
   resource :conversations do
     resources :messages

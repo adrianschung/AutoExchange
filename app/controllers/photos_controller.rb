@@ -1,7 +1,8 @@
 class PhotosController < ApplicationController
   def create
     @vehicle = Vehicle.find(params[:vehicle_id])
-    @vehicle.photos.create(photo_params)
+    @photo = @vehicle.photos.create(photo_params)
+    redirect_to vehicle_path(@vehicle)
   end
 
   private

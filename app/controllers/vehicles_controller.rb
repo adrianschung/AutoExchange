@@ -21,7 +21,7 @@ class VehiclesController < ApplicationController
   end
 
   def show
-    current_vehicle
+    @vehicle = current_vehicle
     @photo = Photo.new
   end
 
