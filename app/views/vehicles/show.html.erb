@@ -17,9 +17,11 @@
   Seller: <%= @vehicle.user.email %>
   <br />
   <br />
-  <% @vehicle.photos.each do |photo| %>
-    <%= image_tag photo.picture.url, class: "photo" %>
-  <% end %>
+  <div class="row">
+    <% @vehicle.photos.each do |photo| %>
+      <%= link_to image_tag("photo.picture.thumb.url"), photo.picture.url, class: "photo" %>
+    <% end %>
+  </div>
   <span class="listing-price">
     <b>Asking Price: <%= number_to_currency(@vehicle.price) %></b>
   </span>
