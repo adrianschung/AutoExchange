@@ -1,7 +1,9 @@
 class PhotosController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @vehicle = Vehicle.find(params[:vehicle_id])
-    @photo = @vehicle.photos.create(photo_params)
+    @vehicle.photos.create!(photo_params)
     redirect_to vehicle_path(@vehicle)
   end
 

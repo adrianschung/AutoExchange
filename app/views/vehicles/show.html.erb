@@ -6,10 +6,6 @@
     <div class="col-2 text-center">
       <% if current_user == @vehicle.user %>
         <%= button_to "Delete Listing", vehicle_path(@vehicle), class: "btn btn-danger", style: "margin-top: 8px", method: :delete %>
-        <%= simple_form_for @photo, url: vehicle_photos_path(@vehicle) do |f| %>
-          <%= f.input :picture %>
-          <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
-        <% end %>
       <% end %>
     </div>
   </div>
@@ -17,17 +13,19 @@
   Seller: <%= @vehicle.user.email %>
   <br />
   <br />
-  <div class="row">
-    <% @vehicle.photos.each do |photo| %>
-      <%= link_to image_tag("photo.picture.thumb.url"), photo.picture.url, class: "photo" %>
-    <% end %>
-  </div>
   <span class="listing-price">
     <b>Asking Price: <%= number_to_currency(@vehicle.price) %></b>
   </span>
   <br />
   <br />
   <div class="specifications-box">
+    <h3>Images</h3>
+    <div class="row">
+      <% @vehicle.photos.each do |photo| %>
+        <%= link_to image_tag(photo.picture.thumb.url), photo.picture.url, class: "photo" %>
+      <% end %>
+    </div>
+    <hr />
     <h3>Specifications</h3>
     <div class="row">
       <div class="col-2">
@@ -37,10 +35,15 @@
       <div class="col-2">
         Mileage: <%= number_with_delimiter(@vehicle.mileage) + " km" %>
       </div>
-      <br />
-      <br />
     </div>
-    <h2>Additional Notes</h2>
+    <hr />
+    <h3>Additional Notes</h3>
     <%= @vehicle.description %>
   </div>
+  <% if current_user == @vehicle.user %>
+    <%= simple_form_for @photo, url: vehicle_photos_path(@vehicle) do |f| %>
+      <%= f.input :picture %>
+      <%= f.submit "Add Photo", class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
 </div>
