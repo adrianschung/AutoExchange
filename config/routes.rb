@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
     resources :photos, only: :create
   end
-  resource :conversations do
+  resources :conversations do
     resources :messages
   end
 end
