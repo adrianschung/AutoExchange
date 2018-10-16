@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-10">
-      <h2 style="margin-top: 0.5rem"><%= @vehicle.year %> <%= @vehicle.make %> <%= @vehicle.model %></h2>
+      <h2><%= @vehicle.year %> <%= @vehicle.make %> <%= @vehicle.model %></h2>
     </div>
     <div class="col-2 text-center">
       <% if current_user == @vehicle.user %>
