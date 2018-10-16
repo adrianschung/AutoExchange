@@ -1,9 +1,9 @@
 class ConversationsController < ApplicationController
-  before_action :authenticate_user
+  before_action :authenticate_user!
 
-  def index
+  def show
     @users = User.all
-    @conversations = Conversation.all
+    @conversations = Conversation.where(sender_id: current_user.id).or(Conversation.where(recipient_id: current_user.id))
   end
 
   def create
@@ -13,7 +13,7 @@ class ConversationsController < ApplicationController
     else
       @conversation = Conversation.create!(conversation_params)
     end
-    redirect_to conversation_messages_path(@conversation)
+    redirect_to conversations_message_path(@conversation)
   end
 
   private
