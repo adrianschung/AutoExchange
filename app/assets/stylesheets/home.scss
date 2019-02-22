@@ -8,7 +8,33 @@
 
 #carouselIndex .carousel-caption {
   background: rgba(0, 0, 0, 0.5);
-  left:35%;
-  right:35%;
-  width: 30%;
+  left: 0%;
+  bottom: 0px;
+  height: 100%;
+  width: 100%;
+  padding-top: 20%;
+  font-size: 2rem;
+  @media only screen and (min-width: 992px) {
+    left: 35%;
+    right: 35%;
+    width: 30%;
+    height: 25%;
+    font-size: 1rem;
+  }
+}
+
+#carouselIndex .carousel-1 {
+  @media only screen and (min-width: 992px) {
+    bottom:auto;
+    position:absolute;
+    top:10%;
+  }
+}
+
+#carouselIndex .carousel-3{
+  @media only screen and (min-width: 992px) {
+    bottom:auto;
+    position:absolute;
+    top:40%;
+  }
 }
