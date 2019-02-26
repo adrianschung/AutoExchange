@@ -59,6 +59,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'bootstrap', '~>4.1.3'
+gem 'bootstrap-social-rails'
+gem 'font-awesome-rails'
 gem 'sprockets-rails', '>=2.3.2'
 gem 'jquery-rails'
 gem 'simple_form'
