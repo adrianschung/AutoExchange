@@ -21,7 +21,6 @@ class VehiclesController < ApplicationController
   end
 
   def show
-    @vehicle = current_vehicle
     @photo = Photo.new
   end
 
@@ -46,6 +45,8 @@ class VehiclesController < ApplicationController
   end
 
   private
+
+  helper_method :current_vehicle
 
   def vehicle_params
     params.require(:vehicle).permit(:type, :make, :model, :color, :year, :mileage, :price, :description, :term)

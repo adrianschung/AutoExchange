@@ -1,27 +1,27 @@
 <div class="container">
   <div class="row">
     <div class="col-10">
-      <h2><%= @vehicle.year %> <%= @vehicle.make %> <%= @vehicle.model %></h2>
+      <h2><%= current_vehicle.year %> <%= current_vehicle.make %> <%= current_vehicle.model %></h2>
     </div>
     <div class="col-2 text-center">
-      <% if current_user == @vehicle.user %>
-        <%= button_to "Delete Listing", vehicle_path(@vehicle), class: "btn btn-danger", style: "margin-top: 8px", method: :delete %>
+      <% if current_user == current_vehicle.user %>
+        <%= button_to "Delete Listing", vehicle_path(current_vehicle), class: "btn btn-danger", style: "margin-top: 8px", method: :delete %>
       <% end %>
     </div>
   </div>
   <hr>
-  Seller: <%= @vehicle.user.email %>
+  Seller: <%= link_to current_vehicle.user.email, user_path(current_vehicle.user) %>
   <br />
   <br />
   <span class="listing-price">
-    <b>Asking Price: <%= number_to_currency(@vehicle.price) %></b>
+    <b>Asking Price: <%= number_to_currency(current_vehicle.price) %></b>
   </span>
   <br />
   <br />
   <div class="specifications-box">
     <h3>Images</h3>
     <div class="row">
-      <% @vehicle.photos.each do |photo| %>
+      <% current_vehicle.photos.each do |photo| %>
         <%= link_to image_tag(photo.picture.thumb.url), photo.picture.url, class: "photo" %>
       <% end %>
     </div>
@@ -29,19 +29,19 @@
     <h3>Specifications</h3>
     <div class="row">
       <div class="col-2">
-        Model: <%= @vehicle.color %>
+        Model: <%= current_vehicle.color %>
       </div>
       <br />
       <div class="col-2">
-        Mileage: <%= number_with_delimiter(@vehicle.mileage) + " km" %>
+        Mileage: <%= number_with_delimiter(current_vehicle.mileage) + " km" %>
       </div>
     </div>
     <hr />
     <h3>Additional Notes</h3>
-    <%= @vehicle.description %>
+    <%= current_vehicle.description %>
   </div>
-  <% if current_user == @vehicle.user %>
-    <%= simple_form_for @photo, url: vehicle_photos_path(@vehicle) do |f| %>
+  <% if current_user == current_vehicle.user %>
+    <%= simple_form_for @photo, url: vehicle_photos_path(current_vehicle) do |f| %>
       <%= f.input :picture %>
       <%= f.submit "Add Photo", class: 'btn btn-primary' %>
     <% end %>
