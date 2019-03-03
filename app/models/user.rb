@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :vehicles
   has_many :conversations
   has_many :messages
+  has_many :user_reviews
   validates :first_name, presence: :true
   validates :last_name, presence: :true
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
